@@ -1,0 +1,78 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar styles */
+.nav-wrapper {
+    background-color: #000000 !important; /* Pure black navbar */
+}
+.nav-wrapper .brand-logo {
+    font-size: 32px;
+    color: #b39ddb !important; /* Light purple */
+}
+.nav-wrapper ul li a {
+    color: #b39ddb !important; /* Light purple for links */
+}
+.nav-wrapper ul li a:hover {
+    color: #d1c4e9 !important; /* Softer purple on hover */
+}
+.nav-wrapper ul li.active a {
+    border-bottom: 2px solid #d1c4e9; /* Purple underline for active links */
+}
+
+/* Buttons */
+.btn {
+    background-color: #673ab7 !important; /* Purple button */
+    color: #ffffff !important;
+}
+.btn:hover {
+    background-color: #5e35b1 !important; /* Slightly darker purple */
+}
+
+/* Card styles */
+.card {
+    background-color: #1e1e1e; /* Dark card background */
+    color: #ffffff; /* White text */
+    border-radius: 8px;
+}
+.card .card-title {
+    color: #b39ddb; /* Light purple for card titles */
+}
+
+/* Form input fields */
+input, textarea {
+    color: #e0e0e0 !important; /* Light text inside input fields */
+    background-color: #2c2c2c !important; /* Dark input background */
+    border: 1px solid #b39ddb !important; /* Purple border */
+}
+input:focus, textarea:focus {
+    border: 1px solid #d1c4e9 !important; /* Softer purple border on focus */
+}
+
+/* Custom links */
+a {
+    color: #b39ddb !important;
+}
+a:hover {
+    color: #d1c4e9 !important;
+}
+
+/* Adjust margins and padding */
+.container {
+    margin: auto;
+    padding: 20px;
+}
+
+/* Messages */
+.alert {
+    background-color: #2c2c2c;
+    color: #ffffff;
+    border: 1px solid #b39ddb;
+    padding: 10px;
+    border-radius: 5px;
+}

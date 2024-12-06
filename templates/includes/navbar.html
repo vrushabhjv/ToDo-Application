@@ -1,0 +1,34 @@
+<nav>
+  <div class="nav-wrapper black">
+    <a href="#" class="brand-logo section purple-text text-lighten-3" style="padding-left: 20px;">TaskTrack</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <!-- Home Page -->
+        <li {% if request.path == '/' %} class="active" {% endif %}>
+            <a href="/" class="purple-text text-lighten-3">Home</a>
+        </li>
+        
+        <!-- View All Tasks -->
+        <li {% if request.path == '/tasks/' %} class="active" {% endif %}>
+            <a href="{% url 'home' %}" class="purple-text text-lighten-3">View Tasks</a>
+            {% comment %} <a href="{% url 'view_tasks' %}" class="purple-text text-lighten-3">View Tasks</a> {% endcomment %}
+        </li>
+        
+        <!-- Add Task -->
+        <li {% if request.path == '/add/' %} class="active" {% endif %}>
+            <a href="{% url 'home' %}" class="purple-text text-lighten-3">Add Task</a>
+            {% comment %} <a href="{% url 'add_task' %}" class="purple-text text-lighten-3">Add Task</a> {% endcomment %}
+        </li>
+        
+        <!-- Profile or Logout -->
+        {% if user.is_authenticated %}
+            <li>
+                <a class="waves-effect waves-light btn purple darken-3" href="{% url 'logout' %}">Logout</a>
+            </li>
+        {% else %}
+            <li>
+                <a class="waves-effect waves-light btn purple darken-3" href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>

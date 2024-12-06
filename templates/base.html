@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskTrack - {% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  <style>
+    /* Fix header and adjust padding */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    main {
+        padding-top: 80px;
+    }
+    .container {
+        width: 85% !important;
+    }
+  </style>
+</head>
+<body class="grey darken-4">
+  <header>
+    {% include 'includes/navbar.html' %}
+  </header>
+  
+  {% include 'includes/messages.html' %}
+  
+  <main>
+    <div class="container section">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+</body>
+</html>
