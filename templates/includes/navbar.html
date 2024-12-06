@@ -9,15 +9,10 @@
         
         <!-- View All Tasks -->
         <li {% if request.path == '/tasks/' %} class="active" {% endif %}>
-            <a href="{% url 'home' %}" class="purple-text text-lighten-3">View Tasks</a>
-            {% comment %} <a href="{% url 'view_tasks' %}" class="purple-text text-lighten-3">View Tasks</a> {% endcomment %}
+            {% comment %} <a href="{% url 'home' %}" class="purple-text text-lighten-3">View Tasks</a> {% endcomment %}
+            <a href="{% url 'view_tasks' %}" class="purple-text text-lighten-3">View Tasks</a>
         </li>
         
-        <!-- Add Task -->
-        <li {% if request.path == '/add/' %} class="active" {% endif %}>
-            <a href="{% url 'home' %}" class="purple-text text-lighten-3">Add Task</a>
-            {% comment %} <a href="{% url 'add_task' %}" class="purple-text text-lighten-3">Add Task</a> {% endcomment %}
-        </li>
         
         <!-- Profile or Logout -->
         {% if user.is_authenticated %}

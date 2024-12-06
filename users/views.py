@@ -3,15 +3,15 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.urls import reverse
-
+from tasks.models import Task
 # Create your views here.
 
 def home(request):
     if request.user.is_authenticated:
         print("User is authenticated")
-        
+        tasks=Task.objects.filter(user=request.user).order_by('-created_at')
         context = {
-            
+            'tasks': tasks
         }
         return render(request, 'home.html',context)
     else:

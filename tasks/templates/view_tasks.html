@@ -1,0 +1,38 @@
+{% extends "templates/base.html" %}
+
+{% block title %}Your Tasks{% endblock %}
+
+{% block content %}
+<section class="card">
+    <div class="card-content center-align">
+        <h2 class="purple-text text-lighten-2">Your Tasks</h2>
+        <ul class="collection">
+            {% if tasks %}
+                {% for task in tasks %}
+                    <li class="collection-item grey darken-3 white-text">
+                        <strong>{{ task.title }}</strong>
+                        {% if task.description %}
+                            - {{ task.description }}
+                        {% endif %}
+                        <br>
+                        <small>Reminder: {{ task.reminder_schedule }}</small>
+                        {% if task.attachment %}
+                            <br>
+                            <a href="{{ task.attachment.url }}" target="_blank" class="purple-text">View Attachment</a>
+                        {% endif %}
+                        <br>
+                        {% if not task.completed %}
+                            <a href="{% url 'mark_task_completed' task.id %}" class="waves-effect waves-light btn green">Mark as Completed</a>
+                        {% else %}
+                            <span class="green-text">Completed</span>
+                        {% endif %}
+                        <a href="{% url 'delete_task' task.id %}" class="waves-effect waves-light btn red">Delete</a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p class="grey-text text-lighten-1">No tasks found.</p>
+            {% endif %}
+        </ul>        
+    </div>
+</section>
+{% endblock %}
