@@ -9,17 +9,16 @@
 <section class="card">
     <div class="card-content center-align">
         <h2 class="purple-text text-lighten-2">Add a New Task</h2>
-        {% comment %} <form method="POST" enctype="multipart/form-data" action="{% url 'home' %}"> {% endcomment %}
         <form method="POST" enctype="multipart/form-data" action="{% url 'add_task' %}">
             {% csrf_token %}
             <div class="row">
                 <div class="input-field col s12">
                     <input id="title" type="text" name="title" required>
-                    <label for="title">Task Title</label>
+                    <label for="title" class="ml-2">Task Title</label>
                 </div>
                 <div class="input-field col s12">
                     <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                    <label for="description">Description</label>
+                    <label for="description"> Description</label>
                 </div>
                 <div class="input-field col s12">
                     <input id="reminder_schedule" type="datetime-local" name="reminder_schedule">

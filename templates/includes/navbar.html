@@ -8,7 +8,7 @@
         </li>
         
         <!-- View All Tasks -->
-        <li {% if request.path == '/tasks/' %} class="active" {% endif %}>
+        <li {% if request.path == '/tasks/allTasks' %} class="active" {% endif %}>
             {% comment %} <a href="{% url 'home' %}" class="purple-text text-lighten-3">View Tasks</a> {% endcomment %}
             <a href="{% url 'view_tasks' %}" class="purple-text text-lighten-3">View Tasks</a>
         </li>

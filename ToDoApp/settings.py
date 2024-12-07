@@ -25,8 +25,8 @@ env = environ.Env()
 environ.Env.read_env()
 
 # Forcing celery to run tasks synchronously in development
-CELERY_TASK_ALWAYS_EAGER = True  # Run tasks immediately, not in the background
-CELERY_TASK_EAGER_PROPAGATES = True  # Propagate exceptions from tasks to Django
+CELERY_TASK_ALWAYS_EAGER = False  # Run tasks immediately, not in the background
+CELERY_TASK_EAGER_PROPAGATES = False  # Propagate exceptions from tasks to Django
 
 # Send_email() configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -144,7 +144,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+STATIC_ROOT='/var/www/tasktrack/staticd/' # Collect static files here, needed for production(nginx)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0' # Celery broker URL for Redis
+CELERY_ACCEPT_CONTENT = ['json'] # Accept JSON content
+CELERY_TASK_SERIALIZER = 'json' # Serialize task as JSON
