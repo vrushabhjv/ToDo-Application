@@ -24,6 +24,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory to store uploaded file
 env = environ.Env()
 environ.Env.read_env()
 
+# Forcing celery to run tasks synchronously in development
+CELERY_TASK_ALWAYS_EAGER = True  # Run tasks immediately, not in the background
+CELERY_TASK_EAGER_PROPAGATES = True  # Propagate exceptions from tasks to Django
+
+# Send_email() configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -116,7 +128,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+USE_TZ = True  # Use timezone-aware datetimes
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

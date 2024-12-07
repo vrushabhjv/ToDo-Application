@@ -11,6 +11,7 @@ class Task(models.Model):
     attachment = models.FileField(upload_to='attachments/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    reminder_sent = models.BooleanField(default=False) # to check if remainder has already been sent or not
     completed = models.BooleanField(default=False)
 
     def __str__(self):

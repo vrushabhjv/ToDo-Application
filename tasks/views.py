@@ -3,11 +3,13 @@ from django.contrib.auth.decorators import login_required
 from .models import Task
 from datetime import datetime, timedelta
 from django.contrib import messages
+from django.utils.timezone import make_aware
 
 def next_day_morning():
     now = datetime.now()
     next_day = now + timedelta(days=1)
-    return next_day.replace(hour=8, minute=0, second=0, microsecond=0)
+    # Ensure the datetime is timezone-aware
+    return make_aware(next_day.replace(hour=8, minute=0, second=0, microsecond=0))
 
 @login_required(login_url='login') 
 def add_task(request):
@@ -19,6 +21,9 @@ def add_task(request):
 
         if not reminder_schedule:
             reminder_schedule = next_day_morning()
+        else:
+            # Parse the datetime string and make it timezone-aware
+            reminder_schedule = make_aware(datetime.fromisoformat(reminder_schedule))
             
         Task.objects.create(
             user=request.user,
