@@ -33,7 +33,7 @@ def add_task(request):
             attachment=attachment,
         )
         messages.success(request, f'Task "{title}" has been added successfully!')
-        return redirect('view_tasks')
+        return redirect('home')
 
 @login_required(login_url='login') 
 def view_tasks(request):
@@ -55,4 +55,17 @@ def delete_task(request, task_id):
     task.delete()
     messages.success(request, f'Task "{task.title}" has been deleted successfully!')
     return redirect('view_tasks')
+
+@login_required(login_url='login')
+def snooze_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    if task.reminder_sent:  
+        task.reminder_schedule += timedelta(hours=1)  # Increment by 1 hour
+        task.reminder_sent = False  
+        task.save()
+        messages.success(request, f'Task "{task.title}" has been snoozed for 1 hour.')
+    else:
+        messages.error(request, f'Task "{task.title}" is not eligible for snoozing.')
+    return redirect('home')
+
 

@@ -68,6 +68,9 @@
                                             <br>
                                             <a href="{% url 'mark_task_completed' task.id %}" class="waves-effect waves-light btn green">Mark as Completed</a>
                                             <a href="{% url 'delete_task' task.id %}" class="waves-effect waves-light btn red">Delete</a>
+                                            {% if task.reminder_sent %}
+                                                <a href="{% url 'snooze_task' task.id %}" class="waves-effect waves-light btn blue">Snooze</a>
+                                            {% endif %}
                                         </li>
                                     {% endif %}
                                 {% endfor %}
