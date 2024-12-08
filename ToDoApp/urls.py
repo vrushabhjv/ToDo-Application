@@ -20,9 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('users.urls')),
-    path('tasks/', include('tasks.urls')),
+    path('todo/admin/', admin.site.urls),
+    path('todo/', include('users.urls')),
+    path('todo/tasks/', include('tasks.urls')),
 ]
 
 if settings.DEBUG:  # Serve media files only in development

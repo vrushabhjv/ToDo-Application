@@ -4,7 +4,7 @@
     <ul id="nav-mobile" class="right hide-on-med-and-down">
         <!-- Home Page -->
         <li {% if request.path == '/' %} class="active" {% endif %}>
-            <a href="/" class="purple-text text-lighten-3">Home</a>
+            <a href="{% url 'home' %}" class="purple-text text-lighten-3">Home</a>
         </li>
         
         <!-- View All Tasks -->
