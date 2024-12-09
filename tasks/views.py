@@ -37,7 +37,7 @@ def add_task(request):
 
 @login_required(login_url='login') 
 def view_tasks(request):
-    tasks = Task.objects.filter(user=request.user).order_by('-created_at')
+    tasks = Task.objects.filter(user=request.user).order_by('-reminder_schedule')
     return render(request, 'view_tasks.html', {'tasks': tasks})
 
 @login_required(login_url='login')

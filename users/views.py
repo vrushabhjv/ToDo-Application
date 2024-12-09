@@ -9,7 +9,7 @@ from tasks.models import Task
 def home(request):
     if request.user.is_authenticated:
         print("User is authenticated")
-        tasks=Task.objects.filter(user=request.user).order_by('-created_at')
+        tasks=Task.objects.filter(user=request.user).order_by('-reminder_schedule')
         context = {
             'tasks': tasks
         }
@@ -61,6 +61,14 @@ def login(request):
             messages.success(request, f'You have successfully logged-in: {user.username}')
             return redirect('home')
         else:
+            users=User.objects.all()
+            user_list=[]
+            for user in users:
+                user_list.append(user.username)
+            if username not in user_list:
+                messages.error(request, 'User does not exist, Please register')
+                print("User does not exist")
+                return redirect('login')
             messages.error(request, 'Invalid credentials')
             print("Invalid credentials")
             return redirect('login')
