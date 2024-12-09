@@ -33,6 +33,9 @@ def send_reminder_emails():
             f"Hi {user.username},\n\n"
             f"You have the following tasks due in the next hour:\n\n"
             f"{task_list}\n\n"
+            f"If you wish to snooze any of these tasks, please log in to your account and click the 'Snooze' button next to the task. "
+            f"This will reschedule the reminder for 1 hour later.\n\n"
+            f"You can log in here: http://ec2-100-28-120-64.compute-1.amazonaws.com/todo/\n\n"
             f"Best regards,\nTaskTrack Team"
         )
 

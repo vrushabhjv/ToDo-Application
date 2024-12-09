@@ -41,6 +41,8 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, email=email, password=password,first_name=fname,last_name=lname)
                 user.save()
+                user = auth.authenticate(username=username, password=password)
+                auth.login(request, user)
                 messages.success(request, f'You have successfully registered: {user.username}')
                 return redirect('home')
     else:

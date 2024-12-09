@@ -89,14 +89,14 @@
     <div class="card-content center-align">
         <h2 class="purple-text text-lighten-2">Quick Actions</h2>
         <div class="row">
-            <div class="col s12 m6">
+            <div class="">
                 {% comment %} <a href="{% url 'home' %}" class="waves-effect waves-light btn purple darken-3">View All Tasks</a> {% endcomment %}
                 <a href="{% url 'view_tasks' %}" class="waves-effect waves-light btn purple darken-3">View All Tasks</a>
             </div>
-            <div class="col s12 m6">
+            {% comment %} <div class="col s12 m6">
                 <a href="{% url 'home' %}" class="waves-effect waves-light btn red darken-3">Delete All Tasks</a>
                 {% comment %} <a href="{% url 'delete_tasks' %}" class="waves-effect waves-light btn red darken-3">Delete All Tasks</a> {% endcomment %}
-            </div>
+            {% comment %} </div> {% endcomment %} 
         </div>
     </div>
 </section>
